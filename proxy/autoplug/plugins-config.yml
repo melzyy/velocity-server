@@ -1,0 +1,106 @@
+# #######################################################################################################################
+#     ___       __       ___  __
+#    / _ |__ __/ /____  / _ \/ /_ _____ _
+#   / __ / // / __/ _ \/ ___/ / // / _ `/
+#  /_/ |_\_,_/\__/\___/_/  /_/\_,_/\_, /
+#                                 /___/ Plugins-Config
+# Thank you for using AutoPlug!
+# You can find detailed installation instructions at our Spigot post: https://www.spigotmc.org/resources/autoplug-automatic-plugin-updater.78414/
+# If there are any questions or you just wanna chat, join our Discord: https://discord.gg/GGNmtCC
+# 
+# #######################################################################################################################
+# This file contains detailed information about your installed plugins. It is fetched from each plugins 'plugin.yml' file (located inside their jars).
+# The data gets refreshed before performing an update-check. To exclude a plugin from the check set exclude=true.
+# If a name/author/version is missing, the plugin gets excluded automatically.
+# If there are plugins that weren't found by the search-algorithm, you can add an id (spigot or bukkit) and a custom link (optional & must be a static link to the latest plugin jar).
+# spigot-id: Can be found directly in the url. Example URLs id is 78414. Example URL: https://www.spigotmc.org/resources/autoplug-automatic-plugin-updater.78414/
+# bukkit-id: Is the 'Project-ID' and can be found on the plugins bukkit site inside of the 'About' box at the right.
+# custom-check-url (FEATURE NOT WORKING YET): must link to a yaml or json file that contains at least these fields: name, author, version (of the plugin)
+# custom-download-url: must be a static url to the plugins latest jar file.
+# alternatives.github.repo-name: Example: 'EssentialsX/Essentials' (can be found in its url: https://github.com/EssentialsX/Essentials)
+# alternatives.github.asset-name: Example: 'EssentialsX' (wrong: 'EssentialsX-1.7.23.jar', we discard the version info).
+# alternatives.jenkins.project-url: Example: 'https://ci.ender.zone/job/EssentialsX/'
+# alternatives.jenkins.artifact-name: Example: 'EssentialsX' (wrong: 'EssentialsX-1.7.23.jar', we discard the version info).
+# alternatives.jenkins.build-id: The currently installed build identifier. Don't touch this.
+# If a spigot-id is not given, AutoPlug will try and find the matching id by using its unique search-algorithm (if it succeeds the spigot-id gets set, else it stays 0).
+# If both (bukkit and spigot) ids are provided, the spigot-id will be used.
+# The configuration for uninstalled plugins wont be removed from this file, but they are automatically excluded from future checks (the exclude value is ignored).
+# If multiple authors are provided, only the first author will be used by the search-algorithm.
+# Note: Remember, that the values for exclude, version and author get overwritten if new data is available.
+# Note for plugin devs: You can add your spigot/bukkit-id to your plugin.yml file. For more information visit https://autoplug.one/faq/2
+plugins-config: 
+  general: 
+    # Keep the plugins entry in this file even after its removal/uninstallation?
+    keep-removed: true
+  LimboAPI: 
+    exclude: false
+    version: 1.0.4-SNAPSHOT
+    latest-version: 
+    author: hevav
+    spigot-id: 95748
+    bukkit-id: 0
+    ignore-content-type: false
+    custom-check-url: 
+    custom-download-url: 
+    alternatives: 
+      github: 
+        repo-name: 
+        asset-name: 
+      jenkins: 
+        project-url: 
+        artifact-name: 
+        build-id: 0
+  LimboAuth: 
+    exclude: false
+    version: 1.0.4-SNAPSHOT
+    latest-version: 
+    author: hevav
+    spigot-id: 99413
+    bukkit-id: 0
+    ignore-content-type: false
+    custom-check-url: 
+    custom-download-url: 
+    alternatives: 
+      github: 
+        repo-name: 
+        asset-name: 
+      jenkins: 
+        project-url: 
+        artifact-name: 
+        build-id: 0
+  SkinsRestorer: 
+    exclude: false
+    version: 14.1.15
+    latest-version: 
+    author: Th3Tr0LLeR
+    spigot-id: 0
+    bukkit-id: 0
+    ignore-content-type: false
+    custom-check-url: 
+    custom-download-url: 
+    alternatives: 
+      github: 
+        repo-name: SkinsRestorer/SkinsRestorerX
+        asset-name: SkinsRestorer.jar
+      jenkins: 
+        project-url: 
+        artifact-name: 
+        build-id: 0
+  UltimateAutoRestart VelocityPassthrough: 
+    exclude: false
+    version: Build 2b
+    latest-version: 
+    author: Norska
+    spigot-id: 96053
+    bukkit-id: 0
+    ignore-content-type: false
+    custom-check-url: 
+    custom-download-url: 
+    alternatives: 
+      github: 
+        repo-name: 
+        asset-name: 
+      jenkins: 
+        project-url: 
+        artifact-name: 
+        build-id: 0
