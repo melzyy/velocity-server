@@ -1,0 +1,113 @@
+#########################################################################################
+#                                                                                       #
+# UltimateAutoRestart, a free resource by Norska @ https://norska.dev                   #
+#                                                                                       #
+# Wiki: https://norska.dev/docs/welcome/                                                #
+# Support: https://norska.dev/discord/                                                  #
+#                                                                                       #
+# You are editing the config.yml file of UltimateAutoRestart.                           #
+#                                                                                       #
+#########################################################################################
+
+#########################################################################################
+#                                                                                       #
+# NOTE: PLEASE READ BEFORE CONFIGURING!                                                 #
+#                                                                                       #
+# Please consult the wiki for any questions regarding the setup of this plugin, if you  #
+# still require help, open a ticket on my discord server!                               #
+#                                                                                       #
+#########################################################################################
+
+# !!! IN ORDER TO RUN PROXY COMMANDS (Bungee or forks, and Velocity) YOU MUST INSTALL A SEPARATE
+# PLUGIN ON YOUR PROXY. PLEASE REFER TO UAR'S RESOURCE PAGE TO FIND THE CORRECT DOWNLOAD LINKS !!!
+
+##################################
+#                                #
+#         RESTART ENTRIES        #
+#                                #
+##################################
+
+settings:
+  # Note: Define the commands that run when the interval hits 0.
+  # Note: Visit the wiki for more information regarding all valid types (bungee, timed, etc).
+  # Note: You can use time, bungee and selfbungee here (timed or not).
+  restartCommands:
+#  - '[bungee] send vanilla lobby'
+  - save-all
+  - stop
+  
+  # Note: Define the commands that run after reboot (when the server starts up).
+  # Note: Those commands can ONLY be timed (e.g [time:x]).
+  # Note: You can only use time and bungee here, NOT selfbungee.
+  commandsAfterReboot:
+#  - '[time:15] mycmd bungee runasproxy send lobby vanilla'
+  
+  # Note: To restart twice on the same day, add another entry with the same day name but different time.
+  # Note: Valid ranges -> Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday and 00;00 to 24;00.
+  restarts:
+  - 'Daily;3;00'
+  
+  # Note: Configure the messages in UltimateAutoRestart's messages.yml file!
+  messageAtIntervals:
+  - '600'
+  - '60'
+  - '300'
+  - '30'
+  - '5'
+  - '4'
+  - '3'
+  - '2'
+  - '1'
+  
+  # Note: Configure the sounds in UltimateAutoRestart's sound.yml file!
+  soundAtIntervals:
+  - '600'
+  - '300'
+  - '60'
+  - '30'
+  - '3'
+  - '2'
+  - '1'
+  
+  # Note: Instead of the interval, the below will show if the restart timer is not running!
+  unscheduledIntervalValue: '&f&lN/A'
+
+##################################
+#                                #
+#         RESTART DELAY          #
+#                                #
+##################################
+
+# Note: Push back the restart if x players are currently on the server!
+delayRestart:
+  enabled: true
+  checkSecondsBeforeRestart: 30
+  minimumPlayers: 3
+  delayBySeconds: 1800
+   
+##################################
+#                                #
+#    VALUE DISPLAY SETTINGS      #
+#                                #
+##################################    
+
+# Note: Configure how the interval shows up!   
+format:
+  seconds: s
+  second: s
+  minutes: 'm '
+  minute: 'm '
+  hours: 'h '
+  hour: 'h '
+  days: 'D '
+  day: 'D '
+  splitter: 'and '
+
+##################################
+#                                #
+#    UPDATE NOTIFIER SETTINGS    #
+#                                #
+################################## 
+
+updates:
+  notifications: true
