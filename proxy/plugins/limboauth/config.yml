@@ -1,0 +1,211 @@
+version: "1.0.4-SNAPSHOT"
+prefix: "Auth &6>>&f"
+
+main:
+  # Maximum time for player to authenticate in milliseconds. If the player stays on the auth limbo for longer than this time, then the player will be kicked.
+  auth-time: 60000
+  enable-bossbar: false
+  # Available colors: PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE
+  bossbar-color: "RED"
+  # Available overlays: PROGRESS, NOTCHED_6, NOTCHED_10, NOTCHED_12, NOTCHED_20
+  bossbar-overlay: "NOTCHED_20"
+  min-password-length: 4
+  # Max password length for the BCrypt hashing algorithm, which is used in this plugin, can't be higher than 71. You can set a lower value than 71.
+  max-password-length: 71
+  check-password-strength: false
+  unsafe-passwords-file: "unsafe_passwords.txt"
+  online-mode-need-auth: true
+  # Needs floodgate plugin.
+  floodgate-need-auth: true
+  # TOTALLY disables hybrid auth feature
+  force-offline-mode: false
+  # Forces all players to get offline uuid
+  force-offline-uuid: false
+  # Delay in milliseconds before sending auth-confirming titles and messages to the player. (login-premium-title, login-floodgate, etc.)
+  premium-and-floodgate-messages-delay: 1250
+  # Forcibly set player's UUID to the value from the database
+  # If the player had the cracked account, and switched to the premium account, the cracked UUID will be used.
+  save-uuid: true
+  enable-totp: false
+  totp-need-password: true
+  register-need-repeat-password: true
+  change-password-need-old-password: true
+  # This prefix will be added to offline mode players nickname
+  offline-mode-prefix: ""
+  # This prefix will be added to online mode players nickname
+  online-mode-prefix: ""
+  # If you want to migrate your database from another plugin, which is not using BCrypt.
+  # You can set an old hash algorithm to migrate from.
+  # AUTHME - AuthMe SHA256(SHA256(password) + salt) that looks like $SHA$salt$hash (AuthMe, MoonVKAuth, DSKAuth, DBA)
+  # AUTHME_NP - AuthMe SHA256(SHA256(password) + salt) that looks like SHA$salt$hash (JPremium)
+  # SHA256_NP - SHA256(password) that looks like SHA$salt$hash
+  # SHA256_P - SHA256(password) that looks like $SHA$salt$hash
+  # SHA512_NP - SHA512(password) that looks like SHA$salt$hash
+  # SHA512_P - SHA512(password) that looks like $SHA$salt$hash
+  # SHA512_DBA - DBA plugin SHA512(SHA512(password) + salt) that looks like SHA$salt$hash (DBA, JPremium)
+  # MD5 - Basic md5 hash
+  # ARGON2 - Argon2 hash that looks like $argon2i$v=1234$m=1234,t=1234,p=1234$hash
+  # MOON_SHA256 - Moon SHA256(SHA256(password)) that looks like $SHA$hash (no salt)
+  # SHA256_NO_SALT - SHA256(password) that looks like $SHA$hash (NexAuth)
+  # SHA512_NO_SALT - SHA512(password) that looks like $SHA$hash (NexAuth)
+  migration-hash: ""
+  # Available dimensions: OVERWORLD, NETHER, THE_END
+  dimension: "THE_END"
+  purge-cache-millis: 3600000
+  purge-premium-cache-millis: 28800000
+  # QR Generator URL, set {data} placeholder
+  qr-generator-url: "https://api.qrserver.com/v1/create-qr-code/?data={data}&size=200x200&ecc=M&margin=30"
+  totp-issuer: "LimboAuth by Elytrium"
+  bcrypt-cost: 10
+  login-attempts: 3
+  ip-limit-registrations: 3
+  totp-recovery-codes-amount: 16
+  # Time in milliseconds, when ip limit works, set to 0 for disable.
+  ip-limit-valid-time: 21600000
+  # Regex of allowed nicknames
+  # ^ means the start of the line, $ means the end of the line
+  # [A-Za-z0-9_] is a character set of A-Z, a-z, 0-9 and _
+  # {3,16} means that allowed length is from 3 to 16 chars
+  allowed-nickname-regex: "^[A-Za-z0-9_]{3,16}$"
+  load-world: false
+  # World file type: schematic (1.12.2 and lower), structure block .nbt (saved in the latest version)
+  world-file-type: "schematic"
+  world-file-path: "1.schematic"
+  # Custom isPremium URL
+  # You can use Mojang one's API (set by default)
+  # Or CloudFlare one's: https://api.ashcon.app/mojang/v1/user/%s
+  # Or use this code to make your own API: https://blog.cloudflare.com/minecraft-api-with-workers-coffeescript/
+  # Or implement your own API, it should just respond with HTTP code 200 only if the player is premium
+  ispremium-auth-url: "https://api.mojang.com/users/profiles/minecraft/%s"
+  # If Mojang rate-limits your server, we cannot determine if the player is premium or not
+  # This option allows you to choose whether every player will be defined as premium or as cracked while Mojang is rate-limiting the server
+  # True - as premium; False - as cracked
+  on-rate-limit-premium: true
+  register-command: 
+  - "/r"
+  - "/reg"
+  - "/register"
+  login-command: 
+  - "/l"
+  - "/log"
+  - "/login"
+  totp-command: 
+  - "/2fa"
+  - "/totp"
+  world-coords:
+    x: 0
+    y: 0
+    z: 0
+  cracked-title-settings:
+    fade-in: 10
+    stay: 70
+    fade-out: 20
+    clear-after-login: false
+  premium-title-settings:
+    fade-in: 10
+    stay: 70
+    fade-out: 20
+  # You can left blank the fields marked with "*" comment.
+  strings:
+    reload: "{PRFX} &aReloaded successfully!"
+    reload-failed: "{PRFX} &cReload failed, check console for details."
+    error-occurred: "{PRFX} &cAn internal error has occurred!"
+    not-player: "{PRFX} &cСonsole is not allowed to execute this command!"
+    not-registered: "{PRFX} &cYou are not registered!"
+    cracked-command: "{PRFX}{NL}&aYou can not use this command since your account is &6PREMIUM&a!"
+    wrong-password: "{PRFX} &cPassword is wrong!"
+    nickname-invalid-kick: "{PRFX}{NL}&cYour nickname contains forbidden characters. Please, change your nickname!"
+    # 6 hours by default in ip-limit-valid-time
+    ip-limit: "{PRFX} &cYour IP has reached max registered accounts. If this is an error, restart your router, or wait about 6 hours."
+    wrong-nickname-case-kick: "{PRFX}{NL}&cThe case of your nickname is wrong. Nickname is CaSe SeNsItIvE."
+    bossbar: "{PRFX} You have &6{0} &fseconds left to log in."
+    times-up: "{PRFX}{NL}&cAuthorization time is up."
+    # *
+    login-premium: "{PRFX} You've been logged in automatically using the premium account!"
+    # *
+    login-premium-title: "{PRFX} Welcome!"
+    # *
+    login-premium-subtitle: "&aYou has been logged in as premium player!"
+    # *
+    login-floodgate: "{PRFX} You've been logged in automatically using the bedrock account!"
+    # *
+    login-floodgate-title: "{PRFX} Welcome!"
+    # *
+    login-floodgate-subtitle: "&aYou has been logged in as bedrock player!"
+    login: "{PRFX} &aPlease, login using &6/login <password>&a, you have &6{0} &aattempts."
+    login-wrong-password: "{PRFX} &cYou''ve entered the wrong password, you have &6{0} &cattempts left."
+    login-wrong-password-kick: "{PRFX}{NL}&cYou've entered the wrong password numerous times!"
+    login-successful: "{PRFX} &aSuccessfully logged in!"
+    # *
+    login-title: ""
+    # *
+    login-subtitle: ""
+    # *
+    login-successful-title: ""
+    # *
+    login-successful-subtitle: ""
+    # Or if register-need-repeat-password set to false remove the "<repeat password>" part.
+    register: "{PRFX} Please, register using &6/register <password> <repeat password>"
+    register-different-passwords: "{PRFX} &cThe entered passwords differ from each other!"
+    register-password-too-short: "{PRFX} &cYou entered too short password, use a different one!"
+    register-password-too-long: "{PRFX} &cYou entered too long password, use a different one!"
+    register-password-unsafe: "{PRFX} &cYour password is unsafe, use a different one!"
+    register-successful: "{PRFX} &aSuccessfully registered!"
+    # *
+    register-title: ""
+    # *
+    register-subtitle: ""
+    # *
+    register-successful-title: ""
+    # *
+    register-successful-subtitle: ""
+    unregister-successful: "{PRFX}{NL}&aSuccessfully unregistered!"
+    unregister-usage: "{PRFX} Usage: &6/unregister <current password> confirm"
+    premium-successful: "{PRFX}{NL}&aSuccessfully changed account state to &6PREMIUM&a!"
+    already-premium: "{PRFX} &cYour account is already &6PREMIUM&c!"
+    not-premium: "{PRFX} &cYour account is not &6PREMIUM&c!"
+    premium-usage: "{PRFX} Usage: &6/premium <current password> confirm"
+    event-cancelled: "{PRFX} Authorization event was cancelled"
+    force-unregister-successful: "{PRFX} &6{0} &asuccessfully unregistered!"
+    force-unregister-kick: "{PRFX}{NL}&aYou have been unregistered by administrator!"
+    force-unregister-not-successful: "{PRFX} &cUnable to unregister &6{0}&c. Most likely this player has never been on this server."
+    force-unregister-usage: "{PRFX} Usage: &6/forceunregister <nickname>"
+    change-password-successful: "{PRFX} &aSuccessfully changed password!"
+    # Or if change-password-need-old-pass set to false remove the "<old password>" part.
+    change-password-usage: "{PRFX} Usage: &6/changepassword <old password> <new password>"
+    force-change-password-successful: "{PRFX} &aSuccessfully changed password for player &6{0}&a!"
+    force-change-password-message: "{PRFX} &aYour password has been changed to &6{0} &aby administator!"
+    force-change-password-not-successful: "{PRFX} &cUnable to change password for &6{0}&c. Most likely this player has never been on this server."
+    force-change-password-usage: "{PRFX} Usage: &6/forcechangepassword <nickname> <new password>"
+    totp: "{PRFX} Please, enter your 2FA key using &6/2fa <key>"
+    # *
+    totp-title: ""
+    # *
+    totp-subtitle: ""
+    totp-successful: "{PRFX} &aSuccessfully enabled 2FA!"
+    totp-disabled: "{PRFX} &aSuccessfully disabled 2FA!"
+    # Or if totp-need-pass set to false remove the "<current password>" part.
+    totp-usage: "{PRFX} Usage: &6/2fa enable <current password>&f or &6/2fa disable <totp key>&f."
+    totp-wrong: "{PRFX} &cWrong 2FA key!"
+    totp-already-enabled: "{PRFX} &c2FA is already enabled. Disable it using &6/2fa disable <key>&c."
+    totp-qr: "{PRFX} Click here to open 2FA QR code in browser."
+    totp-token: "{PRFX} &aYour 2FA token &7(Click to copy)&a: &6{0}"
+    totp-recovery: "{PRFX} &aYour recovery codes &7(Click to copy)&a: &6{0}"
+    destroy-session-successful: "{PRFX} &eYour session is now destroyed, you'll need to log in again after reconnecting."
+  auth-coords:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    yaw: 0.0
+    pitch: 0.0
+
+# Database settings
+database:
+  # Database type: mysql, postgresql or h2.
+  storage-type: "h2"
+  # Settings for Network-based database (like MySQL, PostgreSQL): 
+  hostname: "127.0.0.1:3306"
+  user: "user"
+  password: "password"
+  database: "limboauth"
+  connection-parameters: "?autoReconnect=true&initialTimeout=1&useSSL=false"
