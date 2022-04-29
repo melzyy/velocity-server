@@ -1,0 +1,21 @@
+# #######################################################################################################################
+#     ___       __       ___  __
+#    / _ |__ __/ /____  / _ \/ /_ _____ _
+#   / __ / // / __/ _ \/ ___/ / // / _ `/
+#  /_/ |_\_,_/\__/\___/_/  /_/\_,_/\_, /
+#                                 /___/ Logger-Config
+# Thank you for using AutoPlug!
+# You can find detailed installation instructions at our Spigot post: https://www.spigotmc.org/resources/autoplug-automatic-plugin-updater.78414/
+# If there are any questions or you just wanna chat, join our Discord: https://discord.gg/GGNmtCC
+# 
+# #######################################################################################################################
+logger-config: 
+  # Writes the debug output to console.
+  # The log file contains the debug output by default and this option wont affect that.
+  # This is the only setting that needs a restart to work.
+  debug: false
+  autoplug-label: AP
+  # Forces the terminal to use ANSI. Note that this may fail.
+  force-ANSI: false
+  # Checks the received line from the server process for specific words like 'warn' or 'exception' etc. and colors it accordingly.
+  color-server-log: true
