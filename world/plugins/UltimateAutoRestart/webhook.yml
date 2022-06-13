@@ -34,7 +34,7 @@
 webhook:
    enabled: true
    # Note: Find the URL at Server Settings -> Integrations -> Webhooks -> Select your Webhook (or make a new one) -> Copy Webhook URL
-   url: 'https://discord.com/api/webhooks/946026927825756231/kHWRuzcpwZSWAme_DQm6AXVXfVVSRljVM0S56Q-oM5LpCEs2NIQ-M9ai50m7-ad0GpPK'
+   url: ''
    
 messages:
       
